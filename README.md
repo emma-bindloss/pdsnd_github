@@ -7,7 +7,7 @@ March, 7 2021
 Emma's Bikeshare Project
 
 ### Description
-This project analyzes bikeshare data for 3 cities in the US
+This project analyzes bikeshare data for 3 cities in the US. It solicits interactive input and displays information on popular travel times, stations, and user information
 
 ### Files used
 bikeshare.py
