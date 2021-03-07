@@ -21,9 +21,9 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
-    
+
     print('Hello! Let\'s explore some US bikeshare data!')
-    
+
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
         city = input("\nWould you like to see data for Chicago, New York City, or Washington: ").lower()
@@ -31,7 +31,7 @@ def get_filters():
             print("Oops, please enter a valid city.")
         else:
             break
-                        
+
     # TO DO: get user input for month (all, january, february, ... , june)
     while True:
         month = input("If you would like to filter for a specific month, please input a month between January and June. Otherwise type All: ").title()
@@ -48,7 +48,7 @@ def get_filters():
         else:
             break
 
-    response = "\nThank you for selecting {} for city, {} for month, and {} for day."
+    response = "\nThank you for selecting {} for city, {} for month, and {} for day. Calculating relevant statistics..."
     print(response.format(city.title(), month, day))
     print('-'*40)
     return city, month, day
@@ -66,7 +66,7 @@ def load_data(city, month, day):
         df - Pandas DataFrame containing city data filtered by month and day
     """
     df = pd.read_csv(CITY_DATA[city])
-    
+
     # CREATE: additional columns needed
     # convert the Start Time column to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
@@ -78,18 +78,18 @@ def load_data(city, month, day):
     df['hour'] = df['Start Time'].dt.hour
     # combine columns to create a Start & End Station column
     df['Start & End Station'] = df['Start Station'] + " to " + df['Start Station']
-    
-    
+
+
     if month != 'All':
         month = months.index(month) + 1
         df = df[df['month'] == month]
-    
+
     if day != 'All':
         df = df[df['day of week'] == day]
-    
-    return df        
-    
-    
+
+    return df
+
+
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
 
@@ -186,19 +186,19 @@ def user_stats(df):
 
 
 def view_data(df):
-    # Asks user if they want to view the data and continues until they input no. 
+    # Asks user if they want to view the data and continues until they input no.
     show_data = input('\nWould you like to see 5 lines of raw data? ').lower()
     start_loc = 0
     while show_data != 'no':
         if show_data != 'yes':
-            show_data = input('\nPlease type "yes" or "no". ').lower() 
+            show_data = input('\nPlease type "yes" or "no". ').lower()
         else:
             pd.set_option('display.max_columns', 20)
             print(df.iloc[start_loc : start_loc + 5])
             start_loc += 5
-            show_data = input('\nWould you like to see 5 more lines of data? ').lower()            
- 
-                       
+            show_data = input('\nWould you like to see 5 more lines of data? ').lower()
+
+
 def main():
     while True:
         city, month, day = get_filters()
