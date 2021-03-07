@@ -4,7 +4,7 @@
 March, 7 2021
 
 ### Project Title
-Bikeshare Project
+Emma's Bikeshare Project
 
 ### Description
 This project analyzes bikeshare data for 3 cities in the US
