@@ -188,16 +188,16 @@ def user_stats(df):
 def view_data(df):
     """Displays raw data."""
     # Asks user if they want to view the data and continues until they input no.
-    show_data = input('\nWould you like to see 5 lines of raw data? ').lower()
+    show_data = input('\nWould you like to see 10 lines of raw data? ').lower()
     start_loc = 0
     while show_data != 'no':
         if show_data != 'yes':
             show_data = input('\nPlease type "yes" or "no". ').lower()
         else:
             pd.set_option('display.max_columns', 20)
-            print(df.iloc[start_loc : start_loc + 5])
-            start_loc += 5
-            show_data = input('\nWould you like to see 5 more lines of data? ').lower()
+            print(df.iloc[start_loc : start_loc + 10])
+            start_loc += 10
+            show_data = input('\nWould you like to see 10 more lines of data? ').lower()
 
 
 def main():
