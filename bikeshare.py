@@ -186,6 +186,7 @@ def user_stats(df):
 
 
 def view_data(df):
+    """Displays raw data."""
     # Asks user if they want to view the data and continues until they input no.
     show_data = input('\nWould you like to see 5 lines of raw data? ').lower()
     start_loc = 0
